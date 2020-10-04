@@ -1,0 +1,28 @@
+{
+  "name": "serverlessapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.js",
+  "dependencies": {
+    "aws-sdk": "^2.766.0",
+    "claudia": "^5.12.0",
+    "claudia-api-builder": "^4.1.2",
+    "claudia-bot-builder": "^4.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "create": "claudia create --region eu-central-1 --api-module api",
+    "update": "claudia update",
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chskela/serverlessAPI.git"
+  },
+  "author": " <Aleksey Chistyakov>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chskela/serverlessAPI/issues"
+  },
+  "homepage": "https://github.com/chskela/serverlessAPI#readme"
+}
