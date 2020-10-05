@@ -5,7 +5,7 @@ function getPizzas(pizzaId) {
     return pizzas;
   }
   
-  const pizza = pizzas.find(pizza => pizza.id === pizzaId);
+  const pizza = pizzas.find(pizza => pizza.id == pizzaId);
   
   if (pizza) {
     return pizza;
