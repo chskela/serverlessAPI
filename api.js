@@ -18,20 +18,21 @@ api.get('/pizzas/{id}',
   {
     error: 404
   });
-
+  
+// curl -i -H "Content-Type: application/json" -X POST -d '{"pizzaId":1,"address":"221B Baker Street"}' https://pw7ortv99l.execute-api.eu-central-1.amazonaws.com/latest/orders
 api.post('/orders',
   request => createOrder(request.body),
   {
     success: 201,
     error: 400
   });
-
+// curl -i -H "Content-Type: application/json" -X PUT -d '{"pizzaId":2}' https://pw7ortv99l.execute-api.eu-central-1.amazonaws.com/latest/orders/42
 api.put('/orders/{id}',
   request => updateOrder(request.pathParams.id, request.body),
   {
     error: 400
   });
-  
+// curl -i -H "Content-Type: application/json" -X DELETE https://pw7ortv99l.execute-api.eu-central-1.amazonaws.com/latest/orders/42
 api.delete('/orders/{id}',
   request => deleteOrder(request.pathParams.id),
   {

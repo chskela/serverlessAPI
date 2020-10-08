@@ -4,7 +4,7 @@ function updateOrder(id, updates) {
   }
 
   return {
-    message: 'Order ${id} was successfully updated'
+    message: `Order ${id} was successfully updated`
   };
 }
 
