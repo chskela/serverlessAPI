@@ -8,6 +8,7 @@ const getPizzas = require('./handlers/get-pizzas');
 const createOrder = require('./handlers/create-order');
 const updateOrder = require('./handlers/update-order');
 const deleteOrder = require('./handlers/delete-order');
+const getOrders = require('./handlers/get-orders');
 
 api.get('/', () => 'Welcome to Pizza API');
 
@@ -18,7 +19,18 @@ api.get('/pizzas/{id}',
   {
     error: 404
   });
-  
+
+// 
+api.get('/orders',
+  request => getOrders(),
+  {
+    error: 404
+  });
+api.get('/orders/{id}',
+  request => getOrders(request.pathParams.id),
+  {
+    error: 404
+  });
 // curl -i -H "Content-Type: application/json" -X POST -d '{"pizzaId":1,"address":"221B Baker Street"}' https://pw7ortv99l.execute-api.eu-central-1.amazonaws.com/latest/orders
 api.post('/orders',
   request => createOrder(request.body),
@@ -38,7 +50,7 @@ api.delete('/orders/{id}',
   {
     error: 400
   });
-  
+
 module.exports = api;
 
 // curl -i -H "Content-Type: application/json" -X POST -d '{"pizzaId":1,"address":"221B Baker Street"}' https://pw7ortv99l.execute-api.eu-central-1.amazonaws.com/latest/orders
