@@ -31,14 +31,14 @@ api.get('/orders/{id}',
   {
     error: 404
   });
-// curl -i -H "Content-Type: application/json" -X POST -d '{"pizzaId":1,"address":"221B Baker Street"}' https://pw7ortv99l.execute-api.eu-central-1.amazonaws.com/latest/orders
+// curl -i -H "Content-Type: application/json" -X POST -d '{"pizza":1,"address":"221B Baker Street"}' https://pw7ortv99l.execute-api.eu-central-1.amazonaws.com/latest/orders
 api.post('/orders',
   request => createOrder(request.body),
   {
     success: 201,
     error: 400
   });
-// curl -i -H "Content-Type: application/json" -X PUT -d '{"pizzaId":2}' https://pw7ortv99l.execute-api.eu-central-1.amazonaws.com/latest/orders/42
+// curl -i -H "Content-Type: application/json" -X PUT -d '{"pizza": 3, "address": "221b Baker Street"}' https://pw7ortv99l.execute-api.eu-central-1.amazonaws.com/latest/orders/some-id
 api.put('/orders/{id}',
   request => updateOrder(request.pathParams.id, request.body),
   {

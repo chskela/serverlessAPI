@@ -1,5 +1,4 @@
 const AWS = require('aws-sdk');
-const { v4: uuidv4 } = require('uuid');
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 function updateOrder(orderId, options) {
@@ -10,23 +9,25 @@ function updateOrder(orderId, options) {
   return docClient.update({
     TableName: 'pizza-orders',
     Key: {
-      orderId: id
-    }, 
+      orderId: orderId
+    },
     UpdateExpression: 'set pizza = :p, address=:a',
+    ConditionExpression: "orderStatus = :orderStatus",
     ExpressionAttributeValues: {
-      ':p': options.pizza, 
-      ':a': options.address
+      ':p': options.pizza,
+      ':a': options.address,
+      ':orderStatus': 'pending'
     },
     ReturnValues: 'ALL_NEW'
   }).promise()
-  .then(res => {
-    console.log('Order is updated!', res);
-    return res;
-  })
-  .catch(updateError => {
-    console.log(`Oops? order is not updated :(`, updateError);
-    throw updateError;
-  });
+    .then(res => {
+      console.log('Order is updated!', res);
+      return res;
+    })
+    .catch(updateError => {
+      console.log(`Oops? order is not updated :(`, updateError);
+      throw updateError;
+    });
 }
 
 module.exports = updateOrder;
